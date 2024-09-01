@@ -20,6 +20,7 @@ class Colors extends Color {
 
   // etc.
   static const Color error = Color.fromARGB(255, 255, 0, 0);
+  static const Color pass = Color.fromARGB(255, 76, 175, 80);
   static const Color transparent = Color.fromARGB(0, 0, 0, 0);
 
   Colors(super.value);

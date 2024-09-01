@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Colors;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../../core/shared/navigator/page_navigator.dart';
-import '../../core/shared/type/month_type.dart';
-import 'budget_p.dart';
 
 import '../../core/shared/style/text_field_style.dart';
+import '../../core/shared/type/month_type.dart';
+import '../../core/shared/chart/budget/budget_chart.dart';
+import '../../core/theme/color/colors.dart';
+import 'budget_p.dart';
 
 class BudgetView extends ConsumerStatefulWidget {
   const BudgetView({super.key});
@@ -32,7 +33,7 @@ class _BudgetViewState extends ConsumerState<BudgetView> {
     final nowMonth = MonthType.getByCode(DateTime.now().month).displayName;
     final allDays = MonthType.getByCode(DateTime.now().month).defaultDays;
     final leftDays = MonthType.getDays(DateTime.now());
-
+    final currentDay = DateTime.now().day;
     final isGoodFeedback = ref.watch(budgetPresenterProvider.notifier).getFeedback(allDays: allDays, leftDays: leftDays);
 
     return Material(
@@ -46,7 +47,14 @@ class _BudgetViewState extends ConsumerState<BudgetView> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// TODO: monthly budget, expense, date 시각화 (그래프)
+                  BudgetPieChart(
+                    totalBudget: ref.watch(budgetPresenterProvider.select((value) => value.budget)),
+                    spent: ref.watch(budgetPresenterProvider.select((value) => value.expense)),
+                    currentDay: currentDay,
+                    totalDays: allDays,
+                    chartColor: isGoodFeedback ? Colors.pass : Colors.error,
+                  ),
+                  const SizedBox(height: 60),
                   Row(children: [
                     Text('$nowMonth Budget is'),
                     const SizedBox(width: 10),
@@ -55,11 +63,10 @@ class _BudgetViewState extends ConsumerState<BudgetView> {
                       style: context.textTheme.titleSmall,
                     ),
                   ]),
-
                   Row(
                     children: [
                       Text('\$ ${ref.watch(budgetPresenterProvider.select((value) => value.budget - value.expense))}',
-                          style: context.textTheme.bodySmall?.copyWith(color: isGoodFeedback ? Colors.green : Colors.red)),
+                          style: context.textTheme.bodySmall?.copyWith(color: isGoodFeedback ? Colors.pass : Colors.error)),
                       const SizedBox(width: 10),
                       Text('left for $leftDays days')
                     ],
@@ -87,7 +94,7 @@ class _BudgetViewState extends ConsumerState<BudgetView> {
                   Row(children: [
                     Text(
                       isGoodFeedback ? 'Looking Good! You\'re on track with your budget.' : 'Uh-oh! You\'re overspending now...',
-                      style: context.textTheme.bodySmall?.copyWith(color: isGoodFeedback ? Colors.green : Colors.red),
+                      style: context.textTheme.bodySmall?.copyWith(color: isGoodFeedback ? Colors.pass : Colors.error),
                     )
                   ]),
                 ],
