@@ -50,3 +50,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: GmarketSansOTF
+      fonts:
+        - asset: asset/fonts/GmarketSansOTF/GmarketSansMedium.otf
+          weight: 800
+        - asset: asset/fonts/GmarketSansOTF/GmarketSansLight.otf
+          weight: 600
+        - asset: asset/fonts/GmarketSansOTF/GmarketSansLight.otf
+          weight: 400
