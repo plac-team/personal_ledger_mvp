@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart' hide Headers;
-import 'package:personal_ledger_mvp/entity/expense/expense_entity.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../core/shared/constant.dart';
+import '../../../entity/expense/expense_entity.dart';
 
 part 'expense_service.g.dart';
 

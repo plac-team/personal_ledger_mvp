@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:personal_ledger_mvp/core/shared/type/money_type.dart';
+
+import '../type/money_type.dart';
 
 void showResultDialog({
   required BuildContext context,

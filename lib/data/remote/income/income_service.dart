@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart' hide Headers;
-import 'package:personal_ledger_mvp/entity/income/income_entity.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../core/shared/constant.dart';
+import '../../../entity/income/income_entity.dart';
 
 part 'income_service.g.dart';
 

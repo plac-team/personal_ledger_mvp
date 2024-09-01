@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:personal_ledger_mvp/modules/budget/budget_v.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../modules/home/home_v.dart';
+import '../../modules/budget/budget_v.dart';
 
 part 'route.g.dart';
 

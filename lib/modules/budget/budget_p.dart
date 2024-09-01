@@ -1,5 +1,6 @@
-import 'package:personal_ledger_mvp/modules/budget/budget.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import 'budget.dart';
 
 part 'budget_p.g.dart';
 

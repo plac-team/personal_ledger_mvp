@@ -1,12 +1,10 @@
-import 'package:personal_ledger_mvp/entity/expense/expense_entity.dart';
-
 import '../../../../core/exception/app_exception.dart';
 import '../../entity/common/common_response_entity.dart';
 import '../../entity/income/income_entity.dart';
+import '../../entity/expense/expense_entity.dart';
 
 abstract class HomeInteractor {
   Future<Result<CommonResponseEntity>> upsertIncome({required DailyIncomeEntity money});
-
   Future<Result<CommonResponseEntity>> upsertExpense({required DailyExpenseEntity money});
 }
 
