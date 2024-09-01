@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:personal_ledger_mvp/core/router/route.dart';
 
-import 'core/router/route.dart';
 import 'core/theme/custom_theme.dart';
 
 class MyApp extends ConsumerStatefulWidget {

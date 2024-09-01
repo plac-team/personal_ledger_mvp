@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_ledger_mvp/core/shared/money_type.dart';
+import 'package:personal_ledger_mvp/core/shared/type/money_type.dart';
 
 void showResultDialog({
   required BuildContext context,
@@ -13,8 +13,7 @@ void showResultDialog({
       return AlertDialog(
         backgroundColor: isSuccess ? Colors.green : Colors.red,
         title: Text('Result'),
-        content:
-            Text('$type\n${isSuccess ? 'success' : 'fail'} to send\n\n$result'),
+        content: Text('$type\n${isSuccess ? 'success' : 'fail'} to send\n\n$result'),
         actions: <Widget>[
           TextButton(
             onPressed: () {

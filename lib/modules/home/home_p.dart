@@ -1,4 +1,4 @@
-import 'package:personal_ledger_mvp/core/shared/money_type.dart';
+import 'package:personal_ledger_mvp/core/shared/type/money_type.dart';
 import 'package:personal_ledger_mvp/entity/common/common_response_entity.dart';
 import 'package:personal_ledger_mvp/entity/expense/expense_entity.dart';
 import 'package:personal_ledger_mvp/entity/income/income_entity.dart';
@@ -20,20 +20,13 @@ class HomePresenter extends _$HomePresenter {
     required MoneyType type,
     required dynamic money,
   }) async {
-    print('[VM] upsert money');
-
     if (type == MoneyType.INCOME) {
-      final result =
-          await _interactor.upsertIncome(money: money as DailyIncomeEntity);
-      print('upsert income result => ${result}');
+      final result = await _interactor.upsertIncome(money: money as DailyIncomeEntity);
       if (result is RESULT<CommonResponseEntity>) return true;
     }
 
     if (type == MoneyType.EXPENSE) {
-      final result =
-          await _interactor.upsertExpense(money: money as DailyExpenseEntity);
-      print('upsert exepense result => ${result}');
-
+      final result = await _interactor.upsertExpense(money: money as DailyExpenseEntity);
       if (result is RESULT<CommonResponseEntity>) return true;
     }
 

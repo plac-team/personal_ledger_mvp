@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:personal_ledger_mvp/modules/budget/budget_v.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../modules/home/home_v.dart';
@@ -21,10 +22,21 @@ GoRouter router(RouterRef ref) {
           return CustomTransitionPage(
             key: state.pageKey,
             child: const HomeView(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return _buildTransition(
-                  context, animation, secondaryAnimation, child);
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return _buildTransition(context, animation, secondaryAnimation, child);
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/budget',
+        name: 'budget',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const BudgetView(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return _buildTransition(context, animation, secondaryAnimation, child);
             },
           );
         },
@@ -37,12 +49,8 @@ GoRouter router(RouterRef ref) {
   return router;
 }
 
-SlideTransition _buildTransition(
-    BuildContext context,
-    Animation<double> animation,
-    Animation<double> secondaryAnimation,
-    Widget child) {
-  const begin = Offset(-1.0, 0.0);
+SlideTransition _buildTransition(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  const begin = Offset.zero;
   const end = Offset.zero;
   const curve = Curves.ease;
 
