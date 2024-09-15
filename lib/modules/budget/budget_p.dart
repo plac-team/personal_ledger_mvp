@@ -33,7 +33,7 @@ class BudgetPresenter extends _$BudgetPresenter {
     final current = state.budget - state.expense;
 
     final avg1 = total / allDays;
-    final avg2 = current / (leftDays - 1);
+    final avg2 = current / leftDays;
 
     return (avg2 >= avg1) ? true : false;
   }

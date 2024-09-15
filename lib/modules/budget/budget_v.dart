@@ -32,8 +32,8 @@ class _BudgetViewState extends ConsumerState<BudgetView> {
   Widget build(BuildContext context) {
     final nowMonth = MonthType.getByCode(DateTime.now().month).displayName;
     final allDays = MonthType.getByCode(DateTime.now().month).defaultDays;
-    final leftDays = MonthType.getDays(DateTime.now());
     final currentDay = DateTime.now().day;
+    final leftDays = MonthType.getDays(DateTime.now()) - currentDay;
     final isGoodFeedback = ref.watch(budgetPresenterProvider.notifier).getFeedback(allDays: allDays, leftDays: leftDays);
 
     return Material(
