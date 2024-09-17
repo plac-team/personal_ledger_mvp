@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../modules/home/home_v.dart';
 import '../../modules/budget/budget_v.dart';
+import '../../modules/route/summary_v.dart';
 
 part 'route.g.dart';
 
@@ -35,6 +36,19 @@ GoRouter router(RouterRef ref) {
           return CustomTransitionPage(
             key: state.pageKey,
             child: const BudgetView(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return _buildTransition(context, animation, secondaryAnimation, child);
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: '/summary',
+        name: 'summary',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const SummaryView(),
             transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return _buildTransition(context, animation, secondaryAnimation, child);
             },

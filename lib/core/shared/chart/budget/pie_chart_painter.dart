@@ -138,7 +138,7 @@ class PieChartPainter extends CustomPainter {
   }
 
   void drawCenterText(Canvas canvas, Offset center) {
-    final percentageSpent = (spent / totalBudget * 100).toStringAsFixed(0);
+    final percentageSpent = totalBudget > 0 ? (spent / totalBudget * 100).toStringAsFixed(0) : 0;
 
     final percentageTextPainter = TextPainter(
       text: TextSpan(
